@@ -43,7 +43,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
@@ -93,11 +93,11 @@ Rails.application.configure do
   # SMTPの指定
   config.action_mailer.delivery_method = ENV["DELIVERY_METHOD"].to_sym
   config.action_mailer.smtp_settings = {
-    :address              => ENV["SMTP_ADDRESS"],
+    :address              => 'smtp.sendgrid.net',
     :port                 => ENV["SMTP_PORT"],
     :domain               => ENV["LODGE_DOMAIN"],
-    :user_name            => ENV["SMTP_USERNAME"],
-    :password             => ENV["SMTP_PASSWORD"],
+    :user_name            => ENV["SENDGRID_USERNAME"],
+    :password             => ENV["SENDGRID_PASSWORD"],
     :authentication       => ENV["SMTP_AUTH_METHOD"].to_sym,
     :enable_starttls_auto => ENV["SMTP_ENABLE_STARTTLS_AUTO"],
   }
